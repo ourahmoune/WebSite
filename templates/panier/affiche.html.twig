@@ -1,0 +1,48 @@
+{% extends 'Layouts/medieum.html.twig' %}
+{% block vue %}
+    <h2>votre panier</h2>
+    {%set somme = 0%}
+
+    <table>
+        <thead>
+        <th>libelle</th>
+        <th>prix</th>
+        <th>quantité</th>
+        <th>somme</th>
+        <th> Action</th>
+
+        </thead>
+<tbody>
+{% for np in p %}
+<tr>
+    <td>{{np.produit.libelle}} </td>
+    <td>{{np.produit.prix}}€ </td>
+    <td>{{ np.quantite }} </td>
+    <td>{{ np.quantite * np.produit.prix }} € </td>
+    {%set somme = somme + np.quantite * np.produit.prix  %}
+    <td><a href="{{ path('app_panier_delete', {'id' :  np.id }) }}">delete</a></td>
+</tr>
+
+
+{%endfor%}
+{% if somme == 0 %}
+    <tr> <td>Votre panier est vide </td></tr>
+{% else %}
+<tr><td style="border: none"> somme total est  : {{ somme }} €</td></tr>
+{% endif %}
+
+</tbody>
+    </table>
+
+    {% if somme != 0 %}
+
+        <br>
+        <button> <a href="{{ path('app_panier_vider', {'id' : app.user.id }) }}">vider mon panier </a></button>
+        <button style="background-color: seagreen" > <a href="{{ path('accueil_cmd', {'id' : app.user.id }) }}" style="color: #FFFFFF">commander</a></button>
+
+    {%endif%}
+
+
+
+
+{% endblock %}

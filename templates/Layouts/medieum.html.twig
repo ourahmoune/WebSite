@@ -1,0 +1,20 @@
+{% extends 'Layouts/base.html.twig' %}
+{% block body %}
+
+
+    {% block menu %}
+        {% include('Layouts/menu.html.twig') %}
+        {{ render(controller('App\\Controller\\accueilController::menuAction')) }}
+    {% endblock %}
+    {% block flash %}
+        {% include('Layouts/flash.html.twig') %}
+    {% endblock %}
+
+    {% block vue %}{% endblock %}
+
+    {% block footer %}
+        {% include('Layouts/footer.html.twig') %}
+    {% endblock %}
+
+
+{% endblock %}

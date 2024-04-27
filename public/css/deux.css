@@ -1,0 +1,16 @@
+p{
+    background-color: rgba(67, 67, 201, 0.89);
+}
+#flash{
+color: yellow;
+}
+a {
+    color: #4c5074; /* couleur du texte */
+    text-decoration: none; /* pas de soulignement */
+    font-weight: bold; /* texte en gras */
+    transition: color 0.2s ease-in-out; /* effet de transition sur la couleur */
+  }
+  
+  a:hover {
+    color: #007bff; /* couleur du texte au survol */
+  }

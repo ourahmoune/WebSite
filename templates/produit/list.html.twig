@@ -1,0 +1,54 @@
+{% extends 'Layouts/medieum.html.twig' %}
+{% block vue  %}
+    {% if not app.user   %}
+        <table>
+        <thead>
+        <tr>
+            <th>libelle</th>
+            <th>prix</th>
+            <th>en stock</th>
+        </tr>
+        </thead>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.libelle }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.stock }}</td>
+
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        {% if app.user.roles[0] == "ROLE_ADMIN" or app.user.roles[0] =="ROLE_USER" %}
+            <table>
+                <thead>
+                <tr>
+                    <th>libelle</th>
+                    <th>prix</th>
+                    <th>stock</th>
+                    <th> quantité </th>
+                    <th>Actioin</th>
+                </tr>
+                </thead>
+                {% for produit in produits %}
+                    <tr>
+                        <td>{{ produit.libelle }}</td>
+                        <td>{{ produit.prix }}</td>
+                        <td>{{ produit.stock }}</td>
+                        {%
+                            if produit.stock != 0 or
+                            quantitepaniers[produit.id] !=  0
+                        %}
+
+                        {{ form_start(forms[produit.id]) }}
+                        <td>{{ form_widget(forms[produit.id].quantite) }}</td>
+                        <td>{{ form_row(forms[produit.id].send) }}</td>
+                        {{ form_end(forms[produit.id]) }}
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    {% endif %}
+{% endblock %}

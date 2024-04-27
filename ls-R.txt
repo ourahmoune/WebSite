@@ -1,0 +1,8 @@
+/config/packages/securit.yaml
+
+on  defnit lees les roles des utilisateurs et on associer les routes accecibles par chauqe role
+
+
+/config/route/service.yaml
+on  a met le service de checkpassword dans ce fichier pour vérfier la taille de mot de passe
+

@@ -1,0 +1,23 @@
+{% extends 'Layouts/medieum.html.twig' %}
+{% block vue %}
+<table>
+    <h1>Liste de tous les clients</h1>
+    <tr>
+        <th>id</th>
+        <th>login</th>
+        <th>role</th>
+    </tr>
+    {% for data in tableData %}
+        <tr>
+            <th>{{ data.login }}</th>
+            <td>{{ data.roles[0]  }}</td>
+            {% if data.roles[0] == "ROLE_USER" %}
+                <td><a href="{{ path('app_user_add', {'id' :  data.id , 'role':"ROLE_USER"}) }}">modifier compte - </a></td>
+                <td><a href="{{ path('app_user_delete', {'id' :  data.id }) }}">supprimer</a></td>
+            {%endif%}
+
+        </tr>
+
+    {% endfor %}
+</table>
+{% endblock %}

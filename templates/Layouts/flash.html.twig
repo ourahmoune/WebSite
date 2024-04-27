@@ -1,0 +1,9 @@
+{% if app.session.flashBag.has('info') %}
+
+<div class="flash">
+    {% for msg in app.session.flashBag.get('info') %}
+        <p style="color: chartreuse">{{ msg }}</p>
+    {% endfor %}
+</div>
+
+{% endif %}

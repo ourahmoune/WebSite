@@ -1,0 +1,93 @@
+
+{% if not app.user   %}
+
+<header class="notclient" >
+    <a href="{{ path('accueil') }}">Accueil </a>
+    <nav class="navbar">
+        <ul>
+            <li><a href="{{ path('app_user_add',{'role':"ROLE_USER" , 'id':0}) }}">creer un compte </a></li>
+            <li><a href="{{ path('app_login') }}"> se connecter</a></li>
+            <li><a href="{{ path('app_produit_list') }}">les produits</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="message">
+    <p>Bonjour et bienvenue sur notre site ! <br>
+        Nous sommes ravis de vous accueillir pour la première fois. <br>
+        Nous espérons que vous trouverez tout ce dont vous avez besoin et que vous apprécierez votre expérience de shopping avec nous. Merci de votre visite et à bientôt </p>
+</div>
+
+
+{%else%}
+
+    {%if app.user.roles[0] == "ROLE_SUPER_ADMIN"%}
+
+        <header class="superadmin">
+            <a href="{{ path('accueil') }}">Accueil </a>
+            <nav class="navbar">
+                <ul>
+                    <li>
+                        <a href="{{ path('app_user_add',{'role':"ROLE_ADMIN" , 'id':0}) }}">creer admin</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_logout') }}">logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="message">
+            <p>Bonjour {{ app.user.userIdentifier }} Nous sommes heureux de vous revoir parmi nous</p>
+        </div>
+
+    {%endif %}
+
+    {% if app.user.roles[0] == "ROLE_ADMIN" %}
+
+        <header class="admin">
+            <a href="{{ path('accueil') }}">Accueil </a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{{ path('app_user_modif') }}">les clients</a></li>
+                    <li><a href="{{ path('app_produit_add') }}">ajouter des produits</a></li>
+                    <li><a href="https://fr.wikipedia.org/wiki/The_Truman_Show">The_Truman_Show</a></li>
+                    <li><a href="{{ path('app_logout') }}">logout</a></li>
+
+                </ul>
+            </nav>
+
+        </header>
+        <div class="message">
+            <p>Bonjour {{ app.user.userIdentifier }} Nous sommes heureux de vous revoir parmi nous.</p>
+
+        </div>
+
+
+    {% endif %}
+
+    {% if app.user.roles[0] == "ROLE_USER" %}
+
+        <header class="user">
+            <a href="{{ path('accueil') }}" class="accueil">Accueil </a>
+
+            <nav class="navbar">
+                <ul>
+
+
+                    <li><a href="{{ path('app_user_add', { 'role':"ROLE_USER", 'id' :  app.user.id }) }}">modifier mon compte</a></li>
+                    <li><a href="{{ path('app_panier_affiche', {'id' :  app.user.id }) }}">mon panier</a></li>
+                    <li><a href="{{ path('app_produit_list') }}">les produits</a></li>
+                    <li><a href="{{ path('app_logout') }}">logout</a></li>
+                </ul>
+            </nav>
+
+        </header>
+        <div class="message">
+            <p>Bonjour {{ app.user.userIdentifier }} Nous sommes heureux de vous revoir parmi nous.</p>
+        </div>
+
+
+
+    {%endif%}
+{%endif%}

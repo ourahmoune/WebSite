@@ -1,0 +1,97 @@
+*{
+    margin: 0;padding: 0 ;
+    box-sizing: border-box;
+    font-family: Arial , Helevetica , sans-serif;
+    text-decoration :none;
+    text-transform: capitalize;
+}
+
+
+body{
+    min-height: 100vh;
+    background-size: cover ;
+    background-position: center;
+    align-items: center;
+
+}
+body .message{
+    padding-top: 100px;
+}
+header{
+    position: fixed;
+    top :0 ;
+    left: 0;
+    right: 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    padding: 20px 7%;
+    display: flex;
+    align-items: centre;
+    justify-content: space-between;
+    z-index: 1000;
+}
+header .accueil{
+    font-weight: bolder;
+    font-size: 25;
+    color: #333;
+}
+header .navbar ul{
+    list-style: none;
+}
+header .navbar ul li {
+    position: relative;
+    float: left;
+}
+header .navbar ul li a{
+    font-size: 12px;
+    padding: 12px;
+    color: white;
+    display:block ;
+}
+form{
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+
+}
+input[type="submit"]{
+    margin-top: 15;
+    background-color: #007bff;
+    color: #e0e0e0;
+    border: 1px solid #17a2b8;
+}
+footer{
+    margin-top: 90px;
+    background-image: url("../images/footerjpg.jpg");
+    width: 100%;
+    height: 154px;
+    position: relative;
+}
+.user{
+    background-image: url("../images/user.jpg");
+}
+.admin{
+    background-image: url("../images/admin.webp");
+}
+.superadmin{
+    background-image: url("../images/superadmin.jpg");
+}
+.notclient{
+    background-image: url("../images/no_auth.jpg");
+}
+table ,tr,td,th{
+    border : 1px solid black;
+}
+table {
+    padding-top: 30px;
+    border-collapse: separate;
+}
+.flash{
+    background-color: bisque;
+    padding-top: 30px;
+}
